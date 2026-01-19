@@ -1,0 +1,51 @@
+---
+const services = [
+  {
+    title: "Desarrollo Web a Medida",
+    description: "Creamos plataformas robustas y escalables con Python y Django. Desde portales corporativos hasta sistemas de gestión complejos.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`
+  },
+  {
+    title: "Aplicaciones de Escritorio",
+    description: "Software nativo potente para Windows y Linux utilizando PyQt6. Ideal para herramientas internas que requieren máximo rendimiento.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`
+  },
+  {
+    title: "Soluciones Agrotech",
+    description: "Combinamos ingeniería agronómica con desarrollo de software. Apps para gestión de cultivos, monitoreo y cálculos de terreno.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a6 6 0 0 1-6-6 6 6 0 0 1-6 6 6 6 0 0 1 6 6Z"/></svg>`
+  }
+];
+---
+
+<section id="servicios" class="py-20 px-6 md:px-12 bg-black/20">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">
+        Nuestros <span class="text-brand-crimson">Servicios</span>
+      </h2>
+      <p class="text-xl opacity-80 max-w-2xl mx-auto">
+        Soluciones tecnológicas diseñadas para resolver problemas reales.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-brand-bg border border-white/10 p-8 rounded-2xl hover:border-brand-lime hover:-translate-y-2 transition-all duration-300 group">
+          
+          <div class="text-brand-lime mb-6 group-hover:scale-110 transition-transform duration-300" set:html={service.icon} />
+          
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-brand-lime transition-colors">
+            {service.title}
+          </h3>
+          
+          <p class="opacity-70 leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
