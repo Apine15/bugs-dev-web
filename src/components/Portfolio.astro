@@ -1,0 +1,68 @@
+---
+const projects = [
+  {
+    title: "Nivelación de Terrenos",
+    description: "Aplicación de escritorio para cálculos topográficos complejos y generación de gráficos de terreno en tiempo real.",
+    tags: ["Python", "PyQt6", "Matplotlib", "Pandas"],
+    color: "from-blue-900 to-slate-900" // Un degradado provisional
+  },
+  {
+    title: "Gestión Fitosanitaria",
+    description: "Plataforma web para el seguimiento de cultivos y control de plagas con reportes automatizados.",
+    tags: ["Django", "PostgreSQL", "Bootstrap", "Docker"],
+    color: "from-green-900 to-slate-900"
+  },
+  {
+    title: "Fullstack Notes App",
+    description: "Sistema de gestión de notas con autenticación de usuarios y sincronización en tiempo real.",
+    tags: ["React", "NestJS", "TypeScript", "Tailwind"],
+    color: "from-purple-900 to-slate-900"
+  }
+];
+---
+
+<section id="portfolio" class="py-20 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto">
+    
+    <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center">
+      Proyectos <span class="text-brand-lime">Destacados</span>
+    </h2>
+
+    <div class="space-y-24">
+      {projects.map((project, index) => (
+        <div class={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+          
+          <div class={`w-full md:w-1/2 h-64 md:h-80 rounded-2xl bg-gradient-to-br ${project.color} border border-white/10 shadow-2xl flex items-center justify-center group overflow-hidden relative`}>
+            <span class="text-6xl opacity-20 font-bold group-hover:scale-110 transition-transform duration-500">
+                {project.tags[0]}
+            </span>
+            
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+
+          <div class="w-full md:w-1/2 space-y-6">
+            <h3 class="text-3xl font-bold">{project.title}</h3>
+            <p class="text-lg opacity-70 leading-relaxed">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-3">
+              {project.tags.map((tag) => (
+                <span class="px-3 py-1 text-sm font-medium rounded-full bg-brand-lime/10 text-brand-lime border border-brand-lime/20">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <button class="text-brand-crimson font-bold hover:text-white transition-colors flex items-center gap-2 mt-4">
+              Ver detalles 
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
