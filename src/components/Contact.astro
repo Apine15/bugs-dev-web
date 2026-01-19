@@ -51,16 +51,16 @@
 </section>
 
 <script>
+  // 1. Aserciones: Le decimos a TS qué tipo de elemento HTML es cada uno
   const form = document.getElementById('contact-form') as HTMLFormElement;
-  const button = document.getElementById('submit-btn');
+  const button = document.getElementById('submit-btn') as HTMLButtonElement;
   const toast = document.getElementById('toast');
   const toastContent = document.getElementById('toast-content');
 
-  // Función para mostrar la notificación
-  const showToast = (message, type) => {
+  // 2. Tipado de parámetros: (message: string, type: string)
+  const showToast = (message: string, type: string) => {
     if(!toast || !toastContent) return;
 
-    // Colores según éxito o error
     if (type === 'success') {
       toastContent.className = "px-6 py-4 rounded-lg shadow-2xl border border-brand-lime/50 bg-brand-bg text-brand-lime flex items-center gap-3 font-medium";
       toastContent.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ${message}`;
@@ -69,23 +69,21 @@
       toastContent.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg> ${message}`;
     }
 
-    // Animación de entrada
     toast.classList.remove('translate-y-20', 'opacity-0');
     
-    // Ocultar después de 4 segundos
     setTimeout(() => {
       toast.classList.add('translate-y-20', 'opacity-0');
     }, 4000);
   };
 
-  if (form) {
+  // 3. Null Check: Solo ejecutamos si el form y el botón existen
+  if (form && button) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Evita que la página se recargue
+      e.preventDefault();
 
-      // Cambiar texto del botón a "Enviando..."
       const originalBtnText = button.innerHTML;
       button.innerHTML = "<span>Enviando... ⏳</span>";
-      button.setAttribute('disabled', 'true');
+      button.disabled = true; // Usamos la propiedad nativa disabled
       button.classList.add('opacity-70', 'cursor-not-allowed');
 
       const formData = new FormData(form);
@@ -100,23 +98,23 @@
         });
 
         if (response.ok) {
-          form.reset(); // Limpiar formulario
+          form.reset();
           showToast("¡Mensaje recibido! Te contactaremos pronto.", "success");
         } else {
             const data = await response.json();
-             // A veces Formspree manda detalles del error
-            if (Object.hasOwn(data, 'errors')) {
-                showToast(data["errors"].map(error => error["message"]).join(", "), "error")
+            if (data.errors) {
+                // Mapeamos los errores a un solo string
+                const errorMsg = data.errors.map((err: any) => err.message).join(", ");
+                showToast(errorMsg, "error");
             } else {
                 showToast("Hubo un error al enviar. Intenta de nuevo.", "error");
             }
         }
-      } catch (error) {
+      } catch (error: any) { // Tipamos el error como 'any' para poder leerlo si hace falta
         showToast("Error de conexión. Revisa tu internet.", "error");
       } finally {
-        // Restaurar botón
         button.innerHTML = originalBtnText;
-        button.removeAttribute('disabled');
+        button.disabled = false;
         button.classList.remove('opacity-70', 'cursor-not-allowed');
       }
     });
