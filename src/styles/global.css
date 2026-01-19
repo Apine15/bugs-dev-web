@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  /* Aquí definimos tu paleta Bugs Dev */
+  --color-brand-bg: #2E294E;      /* Space Indigo */
+  --color-brand-crimson: #D7263D; /* Classic Crimson */
+  --color-brand-lime: #C5D86D;    /* Lime Cream */
+  --color-brand-text: #F3F4F6;    /* Blanco Suave */
+  
+  /* Fuente base (opcional) */
+  --font-sans: system-ui, -apple-system, sans-serif;
+}
