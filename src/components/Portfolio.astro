@@ -1,16 +1,24 @@
 ---
 const projects = [
   {
+    id: "topografia", // ID único para abrir el modal
     title: "Nivelación Topográfica Desktop",
-    description: "Software de escritorio para ingeniería agronómica. Realiza cálculos complejos de nivelación de terrenos y genera gráficos de curvas en tiempo real. Optimizado para trabajar offline en campo.",
+    shortDescription: "Software de ingeniería para cálculo y graficado de terrenos offline.",
+    fullDescription: "Desarrollamos una herramienta de escritorio capaz de procesar datos topográficos complejos sin conexión a internet. Permite a los ingenieros generar curvas de nivel en tiempo real directamente en el campo, reduciendo el tiempo de gabinete en un 70%.",
+    // Placeholder para cuando tengas la captura real
+    image: "https://placehold.co/600x400/2E294E/C5D86D?text=Captura+App+Escritorio",
     tags: ["Python", "PyQt6", "Matplotlib", "Pandas"],
-    color: "from-blue-900 to-slate-900" 
+    category: "Desktop App"
+    
   },
   {
+    id: "educativa",
     title: "Plataforma Educativa Integral",
-    description: "Sistema de gestión de contenidos (CMS) totalmente administrable. Despliegue profesional realizado desde cero en servidor VPS Linux, configurando seguridad, base de datos y servidor web.",
+    shortDescription: "CMS autoadministrable con despliegue personalizado en VPS.",
+    fullDescription: "Migramos y modernizamos la infraestructura digital de un instituto educativo. Configuramos un servidor VPS Linux desde cero, asegurando la base de datos y optimizando Nginx para soportar cientos de alumnos concurrentes.",
+    image: "https://placehold.co/600x400/2E294E/D7263D?text=Plataforma+Web",
     tags: ["Django", "Ubuntu VPS", "Nginx", "PostgreSQL"],
-    color: "from-green-900 to-slate-900"
+    category: "Web Platform"
   }
 ];
 ---
@@ -22,41 +30,110 @@ const projects = [
       Proyectos <span class="text-brand-lime">Destacados</span>
     </h2>
 
-    <div class="space-y-24">
-      {projects.map((project, index) => (
-        <div class={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map((project) => (
+        <article class="bg-brand-bg border border-white/10 rounded-2xl overflow-hidden hover:border-brand-lime transition-all duration-300 group flex flex-col h-full">
           
-          <div class={`w-full md:w-1/2 h-64 md:h-80 rounded-2xl bg-gradient-to-br ${project.color} border border-white/10 shadow-2xl flex items-center justify-center group overflow-hidden relative`}>
-            <span class="text-6xl opacity-20 font-bold group-hover:scale-110 transition-transform duration-500">
-                {project.tags[0]}
-            </span>
-            
-            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="h-48 bg-gray-800 relative overflow-hidden group-hover:opacity-90 transition-opacity">
+             <img src={project.image} alt={project.title} class="w-full h-full object-cover" />
+             <div class="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider backdrop-blur-sm">
+                {project.category}
+             </div>
           </div>
 
-          <div class="w-full md:w-1/2 space-y-6">
-            <h3 class="text-3xl font-bold">{project.title}</h3>
-            <p class="text-lg opacity-70 leading-relaxed">
-              {project.description}
-            </p>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold mb-3">{project.title}</h3>
+            <p class="opacity-70 mb-6 flex-grow">{project.shortDescription}</p>
             
-            <div class="flex flex-wrap gap-3">
-              {project.tags.map((tag) => (
-                <span class="px-3 py-1 text-sm font-medium rounded-full bg-brand-lime/10 text-brand-lime border border-brand-lime/20">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <button class="text-brand-crimson font-bold hover:text-white transition-colors flex items-center gap-2 mt-4">
-              Ver detalles 
+            <button 
+              data-target={project.id}
+              class="open-modal text-brand-crimson font-bold hover:text-white transition-colors flex items-center gap-2 mt-auto self-start cursor-pointer"
+            >
+              Ver caso de estudio 
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </button>
           </div>
 
-        </div>
+        </article>
       ))}
     </div>
 
   </div>
+
+  {projects.map((project) => (
+    <dialog id={project.id} class="bg-transparent p-0 w-full max-w-4xl backdrop:bg-black/80 m-auto shadow-2xl rounded-2xl">
+      <div class="bg-brand-bg border border-brand-lime/30 text-brand-text overflow-hidden flex flex-col md:flex-row relative max-h-[90vh]">
+        
+        <form method="dialog" class="absolute top-4 right-4 z-10">
+            <button class="p-2 bg-black/50 rounded-full hover:bg-brand-crimson transition-colors text-white cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </form>
+
+        <div class="w-full md:w-1/2 bg-black/30 min-h-[300px] flex items-center justify-center border-b md:border-b-0 md:border-r border-white/10">
+            <img src={project.image} alt={project.title} class="w-full h-full object-cover" />
+        </div>
+
+        <div class="w-full md:w-1/2 p-8 md:p-12 space-y-6 overflow-y-auto">
+            <h3 class="text-3xl font-bold text-brand-lime">{project.title}</h3>
+            
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-wider opacity-60 mb-2">El Reto & Solución</h4>
+                <p class="opacity-90 leading-relaxed text-sm md:text-base">
+                    {project.fullDescription}
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-wider opacity-60 mb-3">Stack Tecnológico</h4>
+                <div class="flex flex-wrap gap-2">
+                    {project.tags.map(tag => (
+                        <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-brand-lime">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </dialog>
+  ))}
+
 </section>
+
+<script>
+  // Lógica para abrir/cerrar modales
+  const openButtons = document.querySelectorAll('.open-modal');
+  const dialogs = document.querySelectorAll('dialog');
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modalId = btn.getAttribute('data-target');
+      if (modalId) {
+        const modal = document.getElementById(modalId) as HTMLDialogElement;
+        if (modal) {
+          modal.showModal();
+          document.body.style.overflow = 'hidden'; // Evita scroll del fondo
+        }
+      }
+    });
+  });
+
+  // Evento para detectar cierre y restaurar scroll
+  dialogs.forEach(dialog => {
+      dialog.addEventListener('close', () => {
+          document.body.style.overflow = '';
+      });
+      
+      // Cerrar al hacer clic fuera (backdrop click)
+      dialog.addEventListener('click', (e) => {
+          const rect = dialog.getBoundingClientRect();
+          const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+            rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+          if (!isInDialog) {
+              dialog.close();
+          }
+      });
+  });
+</script>
