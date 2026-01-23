@@ -1,22 +1,29 @@
 ---
 const projects = [
   {
-    id: "topografia", // ID único para abrir el modal
+    id: "topografia",
     title: "Nivelación Topográfica Desktop",
     shortDescription: "Software de ingeniería para cálculo y graficado de terrenos offline.",
     fullDescription: "Desarrollamos una herramienta de escritorio capaz de procesar datos topográficos complejos sin conexión a internet. Permite a los ingenieros generar curvas de nivel en tiempo real directamente en el campo, reduciendo el tiempo de gabinete en un 70%.",
-    // Placeholder para cuando tengas la captura real
-    image: "https://placehold.co/600x400/2E294E/C5D86D?text=Captura+App+Escritorio",
+    // Galería: Puedes mezclar imágenes
+    gallery: [
+        { type: 'image', src: "https://placehold.co/600x400/2E294E/C5D86D?text=Interfaz+Principal" },
+        { type: 'image', src: "https://placehold.co/600x400/1a1a2e/C5D86D?text=Grafico+de+Curvas" }
+    ],
     tags: ["Python", "PyQt6", "Matplotlib", "Pandas"],
     category: "Desktop App"
-    
   },
   {
     id: "educativa",
     title: "Plataforma Educativa Integral",
     shortDescription: "CMS autoadministrable con despliegue personalizado en VPS.",
     fullDescription: "Migramos y modernizamos la infraestructura digital de un instituto educativo. Configuramos un servidor VPS Linux desde cero, asegurando la base de datos y optimizando Nginx para soportar cientos de alumnos concurrentes.",
-    image: "https://placehold.co/600x400/2E294E/D7263D?text=Plataforma+Web",
+    // Galería: VIDEO + IMAGEN
+    gallery: [
+        // AQUÍ VA TU VIDEO (Asegúrate que la ruta coincida con tu carpeta public)
+        { type: 'video', src: "/videos/iaf.mp4" }, 
+        // { type: 'image', src: "https://placehold.co/600x400/2E294E/D7263D?text=Panel+Admin" }
+    ],
     tags: ["Django", "Ubuntu VPS", "Nginx", "PostgreSQL"],
     category: "Web Platform"
   }
@@ -32,11 +39,17 @@ const projects = [
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((project) => (
-        <article class="bg-brand-bg border border-white/10 rounded-2xl overflow-hidden hover:border-brand-lime transition-all duration-300 group flex flex-col h-full">
+        <article class="bg-brand-bg border border-white/10 rounded-2xl overflow-hidden hover:border-brand-lime transition-all duration-300 group flex flex-col h-full shadow-lg hover:shadow-brand-lime/10">
           
-          <div class="h-48 bg-gray-800 relative overflow-hidden group-hover:opacity-90 transition-opacity">
-             <img src={project.image} alt={project.title} class="w-full h-full object-cover" />
-             <div class="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider backdrop-blur-sm">
+          <div class="h-56 bg-gray-800 relative overflow-hidden group-hover:opacity-90 transition-opacity">
+             {project.gallery[0].type === 'video' ? (
+                // Si lo primero es un video, mostramos un video mudo en loop o una imagen placeholder
+                <video src={project.gallery[0].src} class="w-full h-full object-cover" muted loop playsinline autoplay></video>
+             ) : (
+                <img src={project.gallery[0].src} alt={project.title} class="w-full h-full object-cover" />
+             )}
+             
+             <div class="absolute top-4 right-4 bg-black/70 px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider backdrop-blur-md border border-white/10">
                 {project.category}
              </div>
           </div>
@@ -61,34 +74,54 @@ const projects = [
   </div>
 
   {projects.map((project) => (
-    <dialog id={project.id} class="bg-transparent p-0 w-full max-w-4xl backdrop:bg-black/80 m-auto shadow-2xl rounded-2xl">
-      <div class="bg-brand-bg border border-brand-lime/30 text-brand-text overflow-hidden flex flex-col md:flex-row relative max-h-[90vh]">
+    <dialog id={project.id} class="bg-transparent p-0 w-full max-w-5xl backdrop:bg-black/90 m-auto shadow-2xl rounded-2xl">
+      <div class="bg-brand-bg border border-brand-lime/30 text-brand-text overflow-hidden flex flex-col md:flex-row relative h-[85vh] md:h-[80vh]">
         
-        <form method="dialog" class="absolute top-4 right-4 z-10">
-            <button class="p-2 bg-black/50 rounded-full hover:bg-brand-crimson transition-colors text-white cursor-pointer">
+        <form method="dialog" class="absolute top-4 right-4 z-20">
+            <button class="p-2 bg-black/60 rounded-full hover:bg-brand-crimson transition-colors text-white cursor-pointer backdrop-blur-sm border border-white/10">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </form>
 
-        <div class="w-full md:w-1/2 bg-black/30 min-h-[300px] flex items-center justify-center border-b md:border-b-0 md:border-r border-white/10">
-            <img src={project.image} alt={project.title} class="w-full h-full object-cover" />
+        <div class="w-full md:w-3/5 bg-black/20 flex flex-col gap-4 p-4 md:p-8 overflow-y-auto border-b md:border-b-0 md:border-r border-white/10">
+            {project.gallery.map((item) => (
+                <div class="rounded-xl overflow-hidden border border-white/5 shadow-lg shrink-0">
+                    {item.type === 'video' ? (
+                        <video 
+                            src={item.src} 
+                            controls 
+                            class="w-full h-auto"
+                            poster={project.gallery[1]?.type === 'image' ? project.gallery[1].src : ''} 
+                        >
+                            Tu navegador no soporta videos.
+                        </video>
+                    ) : (
+                        <img src={item.src} alt="Galería proyecto" class="w-full h-auto object-cover" />
+                    )}
+                </div>
+            ))}
         </div>
 
-        <div class="w-full md:w-1/2 p-8 md:p-12 space-y-6 overflow-y-auto">
-            <h3 class="text-3xl font-bold text-brand-lime">{project.title}</h3>
+        <div class="w-full md:w-2/5 p-8 md:p-10 space-y-8 overflow-y-auto bg-brand-bg">
+            <div>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-lime mb-2">{project.title}</h3>
+                <span class="inline-block px-3 py-1 rounded-full bg-brand-lime/10 text-brand-lime text-xs font-bold border border-brand-lime/20 uppercase tracking-wider">
+                    {project.category}
+                </span>
+            </div>
             
             <div>
-                <h4 class="text-sm font-bold uppercase tracking-wider opacity-60 mb-2">El Reto & Solución</h4>
-                <p class="opacity-90 leading-relaxed text-sm md:text-base">
+                <h4 class="text-sm font-bold uppercase tracking-wider opacity-60 mb-3 border-b border-white/10 pb-2">El Desafío & Solución</h4>
+                <p class="opacity-90 leading-relaxed text-lg font-light">
                     {project.fullDescription}
                 </p>
             </div>
 
             <div>
-                <h4 class="text-sm font-bold uppercase tracking-wider opacity-60 mb-3">Stack Tecnológico</h4>
+                <h4 class="text-sm font-bold uppercase tracking-wider opacity-60 mb-3 border-b border-white/10 pb-2">Tecnologías</h4>
                 <div class="flex flex-wrap gap-2">
                     {project.tags.map(tag => (
-                        <span class="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-brand-lime">
+                        <span class="px-3 py-1.5 text-sm font-mono rounded-md bg-white/5 border border-white/10 text-brand-lime hover:bg-brand-lime/10 transition-colors">
                             {tag}
                         </span>
                     ))}
@@ -103,7 +136,7 @@ const projects = [
 </section>
 
 <script>
-  // Lógica para abrir/cerrar modales
+  // Lógica del Modal (Sin cambios, funciona perfecto)
   const openButtons = document.querySelectorAll('.open-modal');
   const dialogs = document.querySelectorAll('dialog');
 
@@ -114,19 +147,20 @@ const projects = [
         const modal = document.getElementById(modalId) as HTMLDialogElement;
         if (modal) {
           modal.showModal();
-          document.body.style.overflow = 'hidden'; // Evita scroll del fondo
+          document.body.style.overflow = 'hidden'; 
         }
       }
     });
   });
 
-  // Evento para detectar cierre y restaurar scroll
   dialogs.forEach(dialog => {
       dialog.addEventListener('close', () => {
           document.body.style.overflow = '';
+          // Opcional: Pausar videos al cerrar
+          const videos = dialog.querySelectorAll('video');
+          videos.forEach(v => v.pause());
       });
       
-      // Cerrar al hacer clic fuera (backdrop click)
       dialog.addEventListener('click', (e) => {
           const rect = dialog.getBoundingClientRect();
           const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
