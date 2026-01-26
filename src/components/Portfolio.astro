@@ -5,10 +5,10 @@ const projects = [
     title: "Nivelación Topográfica Desktop",
     shortDescription: "Software de ingeniería para cálculo y graficado de terrenos offline.",
     fullDescription: "Desarrollamos una herramienta de escritorio capaz de procesar datos topográficos complejos sin conexión a internet. Permite a los ingenieros generar curvas de nivel en tiempo real directamente en el campo, reduciendo el tiempo de gabinete en un 70%.",
-    // Galería: Puedes mezclar imágenes
     gallery: [
-        { type: 'image', src: "https://placehold.co/600x400/2E294E/C5D86D?text=Interfaz+Principal" },
-        { type: 'image', src: "https://placehold.co/600x400/1a1a2e/C5D86D?text=Grafico+de+Curvas" }
+        { type: 'image', src: "/images/projects/img-2-inta.webp" },
+        { type: 'image', src: "/images/projects/img-3-inta.webp" },
+        { type: 'image', src: "/images/projects/img-4-inta.webp" },
     ],
     tags: ["Python", "PyQt6", "Matplotlib", "Pandas"],
     category: "Desktop App"
@@ -20,7 +20,7 @@ const projects = [
     fullDescription: "Migramos y modernizamos la infraestructura digital de un instituto educativo. Configuramos un servidor VPS Linux desde cero, asegurando la base de datos y optimizando Nginx para soportar cientos de alumnos concurrentes.",
     // Galería: VIDEO + IMAGEN
     gallery: [
-        // AQUÍ VA TU VIDEO (Asegúrate que la ruta coincida con tu carpeta public)
+        // rutas para videos o imágenes
         { type: 'video', src: "/videos/iaf.mp4" }, 
         // { type: 'image', src: "https://placehold.co/600x400/2E294E/D7263D?text=Panel+Admin" }
     ],
@@ -43,7 +43,7 @@ const projects = [
           
           <div class="h-56 bg-gray-800 relative overflow-hidden group-hover:opacity-90 transition-opacity">
              {project.gallery[0].type === 'video' ? (
-                // Si lo primero es un video, mostramos un video mudo en loop o una imagen placeholder
+                // Si primero es un video, se muestras un video mudo en loop o una imagen placeholder
                 <video src={project.gallery[0].src} class="w-full h-full object-cover" muted loop playsinline autoplay></video>
              ) : (
                 <img src={project.gallery[0].src} alt={project.title} class="w-full h-full object-cover" />
@@ -136,7 +136,7 @@ const projects = [
 </section>
 
 <script>
-  // Lógica del Modal (Sin cambios, funciona perfecto)
+  // Lógica del Modal
   const openButtons = document.querySelectorAll('.open-modal');
   const dialogs = document.querySelectorAll('dialog');
 
