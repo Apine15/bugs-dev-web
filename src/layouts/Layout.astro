@@ -13,10 +13,26 @@ const { title } = Astro.props;
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Bugs Dev - Desarrollo de Software" />
+		<meta name="description" content="Agencia de desarrollo de software especializada en soluciones Agrotech, aplicaciones de escritorio y desarrollo web a medida con Python y Django." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
 		<title>{title}</title>
+
+		<meta name="author" content="Bugs Dev Team" />
+		<meta name="keywords" content="Desarrollo Software, Agrotech, Python, Django, Astro, Santiago del Estero, Programación a medida" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://bugs-dev.com/" /> <meta property="og:title" content={title} />
+		<meta property="og:description" content="Transformamos ideas en software potente. Estrategia, código y diseño en un solo lugar." />
+		<meta property="og:image" content="/images/readme-banner.png" />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://bugs-dev.com/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content="Transformamos ideas en software potente. Estrategia, código y diseño en un solo lugar." />
+		<meta property="twitter:image" content="/images/readme-banner.png" />
 	</head>
 	<body class="bg-brand-bg text-brand-text font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
 		
