@@ -4,6 +4,7 @@
 
 ![Bugs Dev Preview](public/images/readme-banner.png)
 
+
 ## 📋 Sobre el Proyecto
 
 Este repositorio contiene el código fuente del sitio web oficial de **Bugs Dev**. El objetivo fue desarrollar una landing page de alto rendimiento, con una identidad visual fuerte ("Dark Mode" nativo) y una experiencia de usuario fluida.
