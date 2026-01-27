@@ -78,10 +78,11 @@ Si deseas correr este proyecto localmente:
 │   └── styles/      # Configuración de Tailwind y CSS Global
 └── astro.config.mjs # Configuración del compilador
 
+
 ## 📞 Contacto
 
 **Andrea Pineda** - Frontend Lead & Agritech Specialist  
-[LinkedIn](AQUÍ_TU_LINKEDIN) | [Portfolio Personal](AQUÍ_TU_PORTFOLIO)
+[LinkedIn] https://www.linkedin.com/in/andreapinedalink/ | [Portfolio Personal]https://apine15.github.io/portfolio-personal/
 
 ---
 *Desarrollado con 🐛 y ❤️ por el equipo de Bugs Dev.*
