@@ -44,9 +44,9 @@ const projects = [
           <div class="h-56 bg-gray-800 relative overflow-hidden group-hover:opacity-90 transition-opacity">
              {project.gallery[0].type === 'video' ? (
                 // Si primero es un video, se muestras un video mudo en loop o una imagen placeholder
-                <video src={project.gallery[0].src} class="w-full h-full object-cover" muted loop playsinline autoplay></video>
+                <video src={project.gallery[0].src} class="w-full h-full object-cover object-top" muted loop playsinline autoplay></video>
              ) : (
-                <img src={project.gallery[0].src} alt={project.title} class="w-full h-full object-cover" />
+                <img src={project.gallery[0].src} alt={project.title} class="w-full h-full object-cover object-top" />
              )}
              
              <div class="absolute top-4 right-4 bg-black/70 px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider backdrop-blur-md border border-white/10">
