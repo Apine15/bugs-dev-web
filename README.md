@@ -23,13 +23,13 @@ El proyecto fue construido priorizando la velocidad de carga (Performance), SEO 
 
 ## ✨ Características Clave
 
-* **⚡ Performance:** Puntuación 100/100 en Lighthouse gracias a la arquitectura de Islas de Astro.
-* **📱 Contacto Directo:** Integración flotante con **WhatsApp API** para comunicación inmediata y Formulario con **Formspree**.
+* **⚡ Performance:** Puntuación 100/100 en Lighthouse.
+* **📱 Contacto Directo:** Botón flotante de **WhatsApp** integrado y Formulario de contacto con notificaciones AJAX en tiempo real.
 * **🎨 Diseño UI/UX:**
     * Paleta de colores personalizada: *Space Indigo* (Base), *Classic Crimson* (Acción) y *Lime Cream* (Highlights).
     * Diseño "Mobile First" totalmente responsivo.
-    * Menú de navegación animado con bloqueo de scroll y backdrop.
-* **🖼️ Portfolio Interactivo:** Sistema de Modales (Dialog API) con soporte para galerías mixtas (Video + Imágenes) y scroll infinito.
+    * Menú de navegación "Sticky" con efecto glassmorphism y versión móvil animada.
+* **🖼️ Portfolio Interactivo:** Sistema de Modales (Dialog API) que soporta galerías mixtas (Video + Imágenes) y scroll infinito.
 
 ## 👩‍💻 Mi Rol en el Proyecto
 
@@ -77,3 +77,11 @@ Si deseas correr este proyecto localmente:
 │   ├── pages/       # Rutas del sitio (index.astro)
 │   └── styles/      # Configuración de Tailwind y CSS Global
 └── astro.config.mjs # Configuración del compilador
+
+## 📞 Contacto
+
+**Andrea Pineda** - Frontend Lead & Agritech Specialist  
+[LinkedIn](AQUÍ_TU_LINKEDIN) | [Portfolio Personal](AQUÍ_TU_PORTFOLIO)
+
+---
+*Desarrollado con 🐛 y ❤️ por el equipo de Bugs Dev.*
