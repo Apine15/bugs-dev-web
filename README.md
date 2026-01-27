@@ -3,7 +3,6 @@
 > Sitio web institucional para agencia de desarrollo de software especializada en soluciones Agrotech y aplicaciones a medida.
 
 ![Bugs Dev Preview](public/images/readme-banner.png)
-*(Nota: Aquí deberías poner una captura panorámica de tu Hero Section o un GIF navegando por la web)*
 
 ## 📋 Sobre el Proyecto
 
