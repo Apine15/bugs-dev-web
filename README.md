@@ -1,43 +1,79 @@
-# Astro Starter Kit: Minimal
+# 🐛 Bugs Dev - Landing Page Corporativa
 
-```sh
-npm create astro@latest -- --template minimal
-```
+> Sitio web institucional para agencia de desarrollo de software especializada en soluciones Agrotech y aplicaciones a medida.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![Bugs Dev Preview](public/images/readme-banner.png)
+*(Nota: Aquí deberías poner una captura panorámica de tu Hero Section o un GIF navegando por la web)*
 
-## 🚀 Project Structure
+## 📋 Sobre el Proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
+Este repositorio contiene el código fuente del sitio web oficial de **Bugs Dev**. El objetivo fue desarrollar una landing page de alto rendimiento, con una identidad visual fuerte ("Dark Mode" nativo) y una experiencia de usuario fluida.
+
+El sitio actúa como punto de contacto central para clientes y showcase de nuestros proyectos destacados, incluyendo aplicaciones de escritorio para ingeniería agronómica y plataformas educativas.
+
+## 🚀 Tecnologías (Stack Tecnológico)
+
+El proyecto fue construido priorizando la velocidad de carga (Performance), SEO y la mantenibilidad del código.
+
+* **Core:** [Astro](https://astro.build/) (v5) - Para generación de sitios estáticos y "Zero JS by default".
+* **Estilos:** [Tailwind CSS](https://tailwindcss.com/) (v4) - Diseño responsivo y sistema de diseño personalizado.
+* **Lenguaje:** [TypeScript](https://www.typescriptlang.org/) - Para lógica robusta y tipado estático en componentes.
+* **Interactividad:** Vanilla JS (Scripts optimizados dentro de islas de Astro).
+* **Formularios:** Integración con [Formspree](https://formspree.io/) vía AJAX + Notificaciones Toast personalizadas.
+
+## ✨ Características Clave
+
+* **⚡ Performance:** Puntuación 100/100 en Lighthouse gracias a la arquitectura de Islas de Astro.
+* **📱 Contacto Directo:** Integración flotante con **WhatsApp API** para comunicación inmediata y Formulario con **Formspree**.
+* **🎨 Diseño UI/UX:**
+    * Paleta de colores personalizada: *Space Indigo* (Base), *Classic Crimson* (Acción) y *Lime Cream* (Highlights).
+    * Diseño "Mobile First" totalmente responsivo.
+    * Menú de navegación animado con bloqueo de scroll y backdrop.
+* **🖼️ Portfolio Interactivo:** Sistema de Modales (Dialog API) con soporte para galerías mixtas (Video + Imágenes) y scroll infinito.
+
+## 👩‍💻 Mi Rol en el Proyecto
+
+**Frontend Lead & Arquitectura**
+
+Como encargada del desarrollo Frontend, mis responsabilidades incluyeron:
+
+1.  **Arquitectura de Componentes:** Creación de componentes reutilizables (`Navbar`, `Cards`, `Modals`) para asegurar escalabilidad.
+2.  **Integración de Diseño:** Traducción de la identidad visual a variables de CSS y configuración de Tailwind v4.
+3.  **Lógica Interactiva:** Implementación de TypeScript para el manejo del DOM, validación de formularios y lógica de los modales.
+4.  **Optimización de Assets:** Gestión de carga de imágenes y videos para mantener el rendimiento.
+
+## 🛠️ Instalación y Despliegue
+
+Si deseas correr este proyecto localmente:
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [https://github.com/tu-usuario/bugs-dev-web.git](https://github.com/tu-usuario/bugs-dev-web.git)
+    ```
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+3.  **Iniciar servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    *El sitio estará disponible en `http://localhost:4321`*
+
+4.  **Construir para producción:**
+    ```bash
+    npm run build
+    ```
+    *Esto generará la carpeta `dist/` con los archivos estáticos listos para desplegar.*
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
-├── public/
+├── public/          # Assets estáticos (Imágenes, Videos, Favicon)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+│   ├── components/  # Piezas UI (Navbar, Contact, Portfolio...)
+│   ├── layouts/     # Plantillas base (HTML, Head, SEO)
+│   ├── pages/       # Rutas del sitio (index.astro)
+│   └── styles/      # Configuración de Tailwind y CSS Global
+└── astro.config.mjs # Configuración del compilador
