@@ -47,7 +47,7 @@ Si deseas correr este proyecto localmente:
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [https://github.com/tu-usuario/bugs-dev-web.git](https://github.com/tu-usuario/bugs-dev-web.git)
+    git clone [https://github.com/Apine15/bugs-dev-web.git](https://github.com/Apine15/bugs-dev-web.git)
     ```
 2.  **Instalar dependencias:**
     ```bash
